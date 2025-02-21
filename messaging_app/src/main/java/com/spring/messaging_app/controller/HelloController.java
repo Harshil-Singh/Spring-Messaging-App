@@ -25,9 +25,17 @@ public class HelloController {
         return "Hello " + name + " from BridgeLabz";
     }
 
-    // UC4: Accepting firstName and lastName from request body
+    // UC4: Accepting firstName and lastName from request body (POST)
     @PostMapping("/post")
     public String sayHelloWithPost(@RequestBody User user) {
         return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz";
+    }
+
+    // UC5: Accept firstName as Path Variable & lastName as Query Parameter (PUT)
+    @PutMapping("/put/{firstName}")
+    public String sayHelloWithPut(
+            @PathVariable String firstName,
+            @RequestParam String lastName) {
+        return "Hello " + firstName + " " + lastName + " from BridgeLabz";
     }
 }
